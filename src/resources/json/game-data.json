@@ -1,0 +1,162 @@
+{
+  "characterList" : ["Devastatore","Leader","Psionico","Tecnico","Tecnomedico","Tiratore Scelto"],
+  "characters" : {
+    "Devastatore" : {
+      "actions" : {
+        "1" : {
+          "title" : "Double Discharge",
+          "hitTarget" : "4",
+          "description" : "Attiva entrambi i Moduli della EXO-H. OPPURE Distruggi entrambi Moduli della EXO-H, subisci 1 danno per ogni modulo distrutto, infliggi 1 danno a tutti i nemici a contatto per ogni modulo distrutto.",
+          "owner" : "Devastatore",
+          "figure" : "I"
+        },
+        "2" : {
+          "title" : "Core Boost",
+          "hitTarget" : "5",
+          "description" : "Il Devastatore guadagna 1 Scudo e muove di 3 unità.",
+          "owner" : "Devastatore",
+          "figure" : "II"
+        },
+        "3" : {
+          "title" : "Single Discharge",
+          "hitTarget" : "5",
+          "description" : "Attiva un Modulo della EXO-H. OPPURE Distruggi un Modulo della EXO-H, subisci 1 danno, infliggi 1 danno a tutti i nemici a contatto.",
+          "owner" : "Devastatore",
+          "figure" : "III"
+        }
+      },
+      "color" : "#f1c40f"
+    },
+    "Leader" : {
+      "actions" : {
+        "1" : {
+          "title" : "\"Fire at Will!\"",
+          "hitTarget" : "3",
+          "description" : "Prova di Ablità (D3,C): ogni personaggio alleato in Range ha -1 alla Difficolta' degli Attacchi fino alla fine del turno.",
+          "owner" : "Leader",
+          "figure" : "I"
+        },
+        "2" : {
+          "title" : "\"Hold the Line!\"",
+          "hitTarget" : "4",
+          "description" : "Il Leader e un altro alleato in Range guadagnano 1 Scudo.",
+          "owner" : "Leader",
+          "figure" : "II"
+        },
+        "3" : {
+          "title" : "\"With Me!\"",
+          "hitTarget" : "4",
+          "description" : "Il Leader e un altro alleato in Range muovono di 3 unità.",
+          "owner" : "Leader",
+          "figure" : "III"
+        }
+      },
+      "color" : "#c0392b"
+    },
+    "Psionico" : {
+      "actions" : {
+        "1" : {
+          "title" : "Psychic Resonance",
+          "hitTarget" : "4",
+          "description" : "Attacca (D2,C) un bersaglio in Range X volte, dove X e' il numero di Azioni Psionico esiliate. Lo Psionico subisce 1 Danno per ogni attacco fallito. Ignora gli Scudi.",
+          "owner" : "Psionico",
+          "figure" : "I"
+        },
+        "2" : {
+          "title" : "Mind Freeze",
+          "hitTarget" : "4",
+          "description" : "Prova (D3) su un bersaglio non Meccanico in Range. Se ha successo il bersaglio non puo' muovere o compiere Azioni fino alla fine del prossimo turno. Se fallisce, l'effetto si applica sullo Psionico.",
+          "owner" : "Psionico",
+          "figure" : "II"
+        },
+        "3" : {
+          "title" : "Psychic Blast",
+          "hitTarget" : "5",
+          "description" : "Attacca (D2,C) un bersaglio non Meccanico in Range. Ignora gli Scudi.",
+          "owner" : "Psionico",
+          "figure" : "III"
+        }
+      },
+      "color" : "#9b59b6"
+    },
+    "Tecnico" : {
+      "actions" : {
+        "1" : {
+          "title" : "System Overload",
+          "hitTarget" : "4",
+          "description" : "Il Tecnico e ogni Torretta Automatica attaccano (D3). Possono avere bersagli diversi.",
+          "owner" : "Tecnico",
+          "figure" : "I"
+        },
+        "2" : {
+          "title" : "Double Shot",
+          "hitTarget" : "4",
+          "description" : "Una Torretta Automatica attacca due volte (D4,C) un bersaglio nel suo Range.",
+          "owner" : "Tecnico",
+          "figure" : "II"
+        },
+        "3" : {
+          "title" : "Deploy Turret",
+          "hitTarget" : "5",
+          "description" : "Piazza una Torretta Automatica A Contatto.",
+          "owner" : "Tecnico",
+          "figure" : "III"
+        }
+      },
+      "color" : "#3498db"
+    },
+    "Tecnomedico" : {
+      "actions" : {
+        "1" : {
+          "title" : "Immortality Protocol",
+          "hitTarget" : "4",
+          "description" : "Sposta l'M-Drone su un alleato a 0 PV e usa tutte le cariche dell'Mdrone: il personaggio torna operativo con un numero di PV pari al numero di cariche consumate.",
+          "owner" : "Tecnomedico",
+          "figure" : "I"
+        },
+        "2" : {
+          "title" : "Emergency Heal",
+          "hitTarget" : "4",
+          "description" : "Sposta l'M-Drone sull'alleato desiderato, dopodichè usa una Carica dell'M-Drone: il personaggio a cui e' assegnato l'Mdrone guadagna 1 PV.",
+          "owner" : "Tecnomedico",
+          "figure" : "II"
+        },
+        "3" : {
+          "title" : "Drone Recharge",
+          "hitTarget" : "5",
+          "description" : "Ristora 2 Cariche all'M-Drone.",
+          "owner" : "Tecnomedico",
+          "figure" : "III"
+        }
+      },
+      "color" : "#27ae60"
+    },
+    "Tiratore Scelto" : {
+      "actions" : {
+        "1" : {
+          "title" : "Kill Shot",
+          "hitTarget" : "2",
+          "description" : "Esegui un Attacco (D2,NC) per 2 danni ad un qualsiasi bersaglio visibile.",
+          "owner" : "Tiratore Scelto",
+          "figure" : "I"
+        },
+        "2" : {
+          "title" : "Team Sight",
+          "hitTarget" : "2",
+          "description" : "Tagga un bersaglio in Range (tutti gli attacchi contro il bersaglio hanno -1 alla difficolta'). Attacca (D2,C) il bersaglio taggato.",
+          "owner" : "Tiratore Scelto",
+          "figure" : "II"
+        },
+        "3" : {
+          "title" : "EMP Shot",
+          "hitTarget" : "3",
+          "description" : "Rimuovi 1 Scudo da un bersaglio in range, poi attacca (D2,C) lo stesso bersaglio.",
+          "owner" : "Tiratore Scelto",
+          "figure" : "III"
+        }
+      },
+      "color" : "#34495e"
+    }
+  },
+  "gameName" : "PewPew Arena"
+}
