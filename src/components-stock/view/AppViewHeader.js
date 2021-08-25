@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './AppView.css'
-import gameData from '../../resources/json/game-data.json'
+import appData from '../../resources/json/app-data.json'
 // eslint-disable-next-line
 import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 
@@ -17,7 +17,7 @@ class AppViewHeader extends Component {
     return (
       <div className = "app-view-header">
         <Link to="/">
-          {gameData.gameName}
+          {appData.gameName}
         </Link>
       </div>
     );

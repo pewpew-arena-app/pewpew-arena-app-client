@@ -306,7 +306,7 @@ class PlayPage extends Component {
     }
     else {
       return(
-        <div>Sorry loading</div>
+        <div>Loading sorry</div>
       );
     }
   }
