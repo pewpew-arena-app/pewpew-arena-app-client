@@ -35,7 +35,7 @@ class PlayingCard extends Component {
           toggleFunction = {this.toggle}
           discardFunction = {this.props.discardFunction}
           banishFunction = {this.props.banishFunction}
-          owner = {this.props.card.characterClassName}
+          owner = {this.props.card.characterClassDescription}
           themeColor = {this.props.card.themeColorHex}
           isExpanded = {this.state.expanded}/>
         {
@@ -43,7 +43,7 @@ class PlayingCard extends Component {
           ? <CardBody
               description = {this.props.card.body}
               hitTarget = {this.props.card.hitTarget}
-              owner = {this.props.card.characterClassName}
+              owner = {this.props.card.characterClassDescription}
               themeColor = {this.props.card.themeColorHex}
               figure = {this.props.card.rank}/>
           : null
