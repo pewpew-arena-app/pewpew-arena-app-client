@@ -19,11 +19,13 @@ class CardBody extends Component {
         <TargetNumber
           hitTarget = {this.props.hitTarget}
           borderStyle = {borderStyle}
-          position = "BODY-RIGHT"/>
+          position = "BODY-RIGHT"
+          type = "NUMBER"/>
         <TargetNumber
           hitTarget = {this.props.figure}
           borderStyle = {borderStyle}
-          position = "BODY-LEFT"/>
+          position = "BODY-LEFT"
+          type = "FIGURE"/>
       </div>
     );
   }

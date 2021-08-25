@@ -29,7 +29,8 @@ class CardHeader extends Component {
             : <TargetNumber
               hitTarget = {this.props.hitTarget}
               borderStyle = {borderStyle}
-              position = "HEADER"/>
+              position = "HEADER"
+              type = "NUMBER"/>
           }
           <div
             className = "card-discard-icon"

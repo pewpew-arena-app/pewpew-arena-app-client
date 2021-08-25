@@ -8,6 +8,7 @@ class TargetNumber extends Component {
   render() {
     let outerClassName = "";
     let innerClassName = "";
+    let targetNumberLabel = "";
     if(this.props.position==="HEADER") {
       outerClassName = "card-target-container-header";
       innerClassName = "card-target card-target-header";
@@ -20,10 +21,17 @@ class TargetNumber extends Component {
       outerClassName = "card-target-container-body-left";
       innerClassName = "card-target card-target-body-left";
     }
+    if(this.props.type=="NUMBER") {
+      targetNumberLabel = this.props.hitTarget;
+    }
+    else {
+      let length = this.props.hitTarget;
+      Array.from({length}).forEach((v, i) => {targetNumberLabel+="I"})
+    }
     return (
       <div className = {outerClassName}>
         <div className = {innerClassName} style = {this.props.borderStyle}>
-          {this.props.hitTarget}
+          {targetNumberLabel}
         </div>
       </div>
     );
