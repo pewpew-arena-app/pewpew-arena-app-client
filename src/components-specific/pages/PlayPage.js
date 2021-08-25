@@ -5,7 +5,7 @@ import InfoTab from '../../components-stock/content/InfoTab.js';
 import CardHand from './CardHand';
 import MiddleButton from '../../components-stock/util/MiddleButton'
 //import getGameRulesResponse from '../../resources/json/get-game-rules-response.json';
-//import getDeckResponse from '../../resources/json/get-deck-response.json';
+//import getCardsResponse from '../../resources/json/get-deck-response.json';
 import ENDPOINTS from '../../resources/json/endpoints.json';
 
 //TODO: replace info panel with better info panel
@@ -35,12 +35,12 @@ class PlayPage extends Component {
       this.setState({
         gameRules: getGameRulesResponse.gameRules
       });
-      console.log("Rules fetched, fetching deck now...");
-      fetch(ENDPOINTS.DECK)
+      console.log("Rules fetched, fetching cards now...");
+      fetch(ENDPOINTS.CARDS)
       .then(res => res.json())
-      .then((getDeckResponse) => {
+      .then((getCardsResponse) => {
         this.setState({
-          deck: this.shuffle(this.buildDeck(getDeckResponse.deck.cards))
+          deck: this.shuffle(this.buildDeck(getCardsResponse.cards))
         })
       })
       .catch(console.log);
