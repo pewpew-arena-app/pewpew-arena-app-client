@@ -1,0 +1,6 @@
+{
+    "CHARACTERS" : "https://wglq0jz16m.execute-api.eu-south-1.amazonaws.com/Prod/characters?characterDetail=ALL_INFO",
+    "GAME_RULES" : "https://dvs0m6dmr7.execute-api.eu-south-1.amazonaws.com/Prod/game-rules",
+    "VERSIONS" : "https://ima1fosdag.execute-api.eu-south-1.amazonaws.com/Prod/versions",
+    "DECK" : "https://pcej668ycf.execute-api.eu-south-1.amazonaws.com/Prod/deck"
+}

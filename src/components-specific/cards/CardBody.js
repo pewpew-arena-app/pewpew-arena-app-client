@@ -15,9 +15,7 @@ class CardBody extends Component {
         <div className = "card-body-subheader">
           {this.props.owner}
         </div>
-        <div className = "card-body-text">
-          {this.props.description}
-        </div>
+        <div className = "card-body-text" dangerouslySetInnerHTML={{ __html: this.props.description }}/>
         <TargetNumber
           hitTarget = {this.props.hitTarget}
           borderStyle = {borderStyle}

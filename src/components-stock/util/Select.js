@@ -19,10 +19,10 @@ class Select extends Component {
   render() {
     return (
       <div >
-        <select value={this.props.selected} onChange={this.handleChange}>
+        <select value={this.props.selected.id} onChange={this.handleChange}>
         {this.props.options.map(
           (optionItem) => (
-            <option key={optionItem} value={optionItem}>{optionItem}</option>
+            <option key={optionItem.id} value={optionItem.id}>{optionItem.name}</option>
           )
         )}
         </select>

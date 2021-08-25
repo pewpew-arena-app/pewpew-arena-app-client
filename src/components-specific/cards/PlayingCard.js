@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import './Cards.css'
 import CardHeader from './CardHeader'
 import CardBody from './CardBody'
-import gameData from '../../resources/json/game-data.json';
 
 class PlayingCard extends Component {
 
@@ -36,17 +35,17 @@ class PlayingCard extends Component {
           toggleFunction = {this.toggle}
           discardFunction = {this.props.discardFunction}
           banishFunction = {this.props.banishFunction}
-          owner = {this.props.card.owner}
-          themeColor = {gameData.characters[this.props.card.owner].color}
+          owner = {this.props.card.characterClassName}
+          themeColor = {this.props.card.themeColorHex}
           isExpanded = {this.state.expanded}/>
         {
           this.state.expanded
           ? <CardBody
-              description = {this.props.card.description}
+              description = {this.props.card.body}
               hitTarget = {this.props.card.hitTarget}
-              owner = {this.props.card.owner}
-              themeColor = {gameData.characters[this.props.card.owner].color}
-              figure = {this.props.card.figure}/>
+              owner = {this.props.card.characterClassName}
+              themeColor = {this.props.card.themeColorHex}
+              figure = {this.props.card.rank}/>
           : null
         }
       </div>

@@ -5,6 +5,7 @@ import InfoTab from '../../components-stock/content/InfoTab.js'
 import CoolLink from '../../components-stock/util/CoolLink'
 import AppData from '../../resources/json/app-data.json'
 
+//this still makes sense, it's the version of the client side app
 const appVersion = AppData.appVersionMajor+"."+AppData.appVersionMinor;
 
 class LandingPage extends Component {

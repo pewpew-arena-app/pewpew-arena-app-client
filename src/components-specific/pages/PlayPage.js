@@ -4,7 +4,9 @@ import '../../components-stock/content/Content.css';
 import InfoTab from '../../components-stock/content/InfoTab.js';
 import CardHand from './CardHand';
 import MiddleButton from '../../components-stock/util/MiddleButton'
-import gameData from '../../resources/json/game-data.json';
+//import getGameRulesResponse from '../../resources/json/get-game-rules-response.json';
+//import getDeckResponse from '../../resources/json/get-deck-response.json';
+import ENDPOINTS from '../../resources/json/endpoints.json';
 
 //TODO: replace info panel with better info panel
 
@@ -12,9 +14,7 @@ class PlayPage extends Component {
 
   constructor (props) {
     super(props);
-    var startingDeck = this.shuffle(this.buildDeck());
     this.state = {
-      deck: startingDeck,
       trash: [],
       exile: [],
       hand: [],
@@ -27,19 +27,42 @@ class PlayPage extends Component {
     this.undo = this.undo.bind(this);
   }
 
-  buildDeck () {
+  componentDidMount () {
+    console.log("Component mounted, fetching rules...");
+    fetch(ENDPOINTS.GAME_RULES)
+    .then(res => res.json())
+    .then((getGameRulesResponse) => {
+      this.setState({
+        gameRules: getGameRulesResponse.gameRules
+      })
+    })
+    .catch(console.log);
+
+    console.log("Component mounted, fetching deck...");
+    fetch(ENDPOINTS.DECK)
+    .then(res => res.json())
+    .then((getDeckResponse) => {
+      this.setState({
+        deck: this.shuffle(this.buildDeck(getDeckResponse.deck.cards))
+      })
+    })
+    .catch(console.log);
+  }
+
+  buildDeck (cards) {
     var deck = [];
     var selectedCharacters = [
       this.props.location.state.currentSelect1,
       this.props.location.state.currentSelect2,
       this.props.location.state.currentSelect3
     ];
-    selectedCharacters.forEach(function (character) {
-      for(var i=0;i<3;i++)
-        deck.push(gameData.characters[character].actions["3"]);
-      for(var j=0;j<2;j++)
-          deck.push(gameData.characters[character].actions["2"]);
-      deck.push(gameData.characters[character].actions["1"]);
+    selectedCharacters.forEach(character => {
+      for(var i=0;i<this.state.gameRules.find(rule => rule.ruleKey=="N_CARDS_PER_RANK_III").ruleValue;i++)
+        deck.push(cards.find(card => card.characterClass==character.type && card.rank==3));
+      for(var j=0;j<this.state.gameRules.find(rule => rule.ruleKey=="N_CARDS_PER_RANK_II").ruleValue;j++)
+        deck.push(cards.find(card => card.characterClass==character.type && card.rank==2));
+      for(var k=0;k<this.state.gameRules.find(rule => rule.ruleKey=="N_CARDS_PER_RANK_I").ruleValue;k++)
+        deck.push(cards.find(card => card.characterClass==character.type && card.rank==1));
     });
 
     return deck;
@@ -260,26 +283,32 @@ class PlayPage extends Component {
   render() {
 
     const isHistoryAvailable = (this.state.actionHistory.length>0);
-
-    return (
-      <div className = "app-view-body">
-        <InfoTab text={this.state.infoText}/>
-        <MiddleButton
-          onclick = {this.draw}
-          buttonText = "DRAW"
-          theme = "BLACK"/>
+    if(this.state.deck && this.state.deck.length>0) {
+      return (
+        <div className = "app-view-body">
+          <InfoTab text={this.state.infoText}/>
           <MiddleButton
-            onclick = {this.undo}
-            buttonText = "UNDO"
-            isDisabled = {!isHistoryAvailable}
-            theme = "WHITE"/>
-
-        <CardHand
-          cards = {this.state.hand}
-          discardFunction = {this.discard}
-          banishFunction = {this.banish}/>
-      </div>
-    );
+            onclick = {this.draw}
+            buttonText = "DRAW"
+            theme = "BLACK"/>
+            <MiddleButton
+              onclick = {this.undo}
+              buttonText = "UNDO"
+              isDisabled = {!isHistoryAvailable}
+              theme = "WHITE"/>
+  
+          <CardHand
+            cards = {this.state.hand}
+            discardFunction = {this.discard}
+            banishFunction = {this.banish}/>
+        </div>
+      );
+    }
+    else {
+      return(
+        <div>Sorry loading</div>
+      );
+    }
   }
 }
 
