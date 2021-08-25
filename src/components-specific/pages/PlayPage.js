@@ -34,19 +34,19 @@ class PlayPage extends Component {
     .then((getGameRulesResponse) => {
       this.setState({
         gameRules: getGameRulesResponse.gameRules
+      });
+      console.log("Rules fetched, fetching deck now...");
+      fetch(ENDPOINTS.DECK)
+      .then(res => res.json())
+      .then((getDeckResponse) => {
+        this.setState({
+          deck: this.shuffle(this.buildDeck(getDeckResponse.deck.cards))
+        })
       })
+      .catch(console.log);
     })
     .catch(console.log);
 
-    console.log("Component mounted, fetching deck...");
-    fetch(ENDPOINTS.DECK)
-    .then(res => res.json())
-    .then((getDeckResponse) => {
-      this.setState({
-        deck: this.shuffle(this.buildDeck(getDeckResponse.deck.cards))
-      })
-    })
-    .catch(console.log);
   }
 
   buildDeck (cards) {
@@ -306,7 +306,7 @@ class PlayPage extends Component {
     }
     else {
       return(
-        <div>Loading sorry</div>
+        <div className = "app-view-body">Loading sorry</div>
       );
     }
   }
