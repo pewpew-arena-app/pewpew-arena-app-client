@@ -7,14 +7,18 @@ import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 
 class SelectPage extends Component {
 
-  render() {
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
 
-    const infoText = "Scegli tre personaggi da includere nel tuo mazzo (non fare il simpaticone, scegline tre diversi).";
+  render() {
+    const infoText = "Scegli tre personaggi da includere nel tuo mazzo.";
 
     return (
       <div className = "app-view-body">
         <InfoTab text={infoText}/>
-        <CharacterSelector />
+        <CharacterSelector selectedVersion={this.props.location.state.currentlySelectedVersion}/>
       </div>
     );
   }

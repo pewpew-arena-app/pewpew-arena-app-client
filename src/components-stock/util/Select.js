@@ -20,9 +20,15 @@ class Select extends Component {
     return (
       <div >
         <select value={this.props.selected.id} onChange={this.handleChange}>
-        {this.props.options.map(
+        {this.props.options
+        .filter(
+          (option) => {
+            return !this.props.excludedIds || !this.props.excludedIds.includes(option.id)
+          }
+        )
+        .map(
           (optionItem) => (
-            <option key={optionItem.id} value={optionItem.id}>{optionItem.name}</option>
+            <option key={optionItem.id} value={optionItem.id}>{optionItem.name ? optionItem.name : optionItem.id}</option>
           )
         )}
         </select>

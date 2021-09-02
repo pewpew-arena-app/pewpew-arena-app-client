@@ -13,6 +13,8 @@ class CardHand extends Component {
 */
 
   render() {
+    console.debug("Rendering card hand with cards:");
+    console.debug(this.props.cards);
     return (
       <div className = "card-hand">
         {this.props.cards.map((card,cardIndex) =>(

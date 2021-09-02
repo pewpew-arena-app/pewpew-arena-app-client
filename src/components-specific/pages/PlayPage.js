@@ -27,6 +27,10 @@ class PlayPage extends Component {
     this.undo = this.undo.bind(this);
   }
 
+  buildGetCardsUrl(selectedVersion) {
+    return ENDPOINTS.CARDS + '?gameVersion=' + selectedVersion;
+  }
+
   componentDidMount () {
     console.log("Component mounted, fetching rules...");
     fetch(ENDPOINTS.GAME_RULES)
@@ -36,7 +40,8 @@ class PlayPage extends Component {
         gameRules: getGameRulesResponse.gameRules
       });
       console.log("Rules fetched, fetching cards now...");
-      fetch(ENDPOINTS.CARDS)
+      console.log("state is\n"+JSON.stringify(this.props.location.state));
+      fetch(this.buildGetCardsUrl(this.props.location.state.selectedVersion))
       .then(res => res.json())
       .then((getCardsResponse) => {
         this.setState({
@@ -58,11 +63,11 @@ class PlayPage extends Component {
     ];
     selectedCharacters.forEach(character => {
       for(var i=0;i<this.state.gameRules.find(rule => rule.ruleKey=="N_CARDS_PER_RANK_III").ruleValue;i++)
-        deck.push(cards.find(card => card.characterClass==character.type && card.rank==3));
+        deck.push(cards.find(card => card.characterClass==character.id && card.rank==3));
       for(var j=0;j<this.state.gameRules.find(rule => rule.ruleKey=="N_CARDS_PER_RANK_II").ruleValue;j++)
-        deck.push(cards.find(card => card.characterClass==character.type && card.rank==2));
+        deck.push(cards.find(card => card.characterClass==character.id && card.rank==2));
       for(var k=0;k<this.state.gameRules.find(rule => rule.ruleKey=="N_CARDS_PER_RANK_I").ruleValue;k++)
-        deck.push(cards.find(card => card.characterClass==character.type && card.rank==1));
+        deck.push(cards.find(card => card.characterClass==character.id && card.rank==1));
     });
 
     return deck;

@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './AppView.css'
 import InfoTab from '../content/InfoTab.js'
 import ContentTab from '../content/ContentTab.js'
+// eslint-disable-next-line
+import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 
 class AppViewBody extends Component {
 /*

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ENDPOINTS from '../../resources/json/endpoints.json';
 import Select from '../../components-stock/util/Select';
 // eslint-disable-next-line
-import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
+//import {BrowserRouter as Router,Route,Link} from 'react-router-dom';
 import CoolLink from '../../components-stock/util/CoolLink'
 
 class CharacterSelector extends Component {
@@ -10,7 +10,9 @@ class CharacterSelector extends Component {
   //TODO: number of selectable characters should depend on a parameter as well lol
   constructor (props) {
     super(props);
-    this.state = {};
+    this.state = {
+      selectedVersion : this.props.selectedVersion
+    };
 /*     characterList: getCharactersResponse.characters,
       currentSelect1: getCharactersResponse.characters[0],
       currentSelect2: getCharactersResponse.characters[1],
@@ -40,7 +42,7 @@ class CharacterSelector extends Component {
     console.log("changing currentSelect1 to "+e.target.value);
     this.setState(
       {
-        "currentSelect1" : this.state.characterList.find(character => parseInt(character.id, 10)===parseInt(e.target.value, 10))
+        "currentSelect1" : this.state.characterList.find(character => character.id===e.target.value)
       }
     );
   }
@@ -49,7 +51,7 @@ class CharacterSelector extends Component {
     console.log("changing currentSelect2 to "+e.target.value);
     this.setState(
       {
-        "currentSelect2" : this.state.characterList.find(character => parseInt(character.id, 10)===parseInt(e.target.value, 10))
+        "currentSelect2" : this.state.characterList.find(character => character.id===e.target.value)
       }
     );
   }
@@ -58,7 +60,7 @@ class CharacterSelector extends Component {
     console.log("changing currentSelect3 to "+JSON.stringify(e.target.value));
     this.setState(
       {
-        "currentSelect3" : this.state.characterList.find(character => parseInt(character.id, 10)===parseInt(e.target.value, 10))
+        "currentSelect3" : this.state.characterList.find(character => character.id===e.target.value)
       }
     );
   }
@@ -70,15 +72,18 @@ class CharacterSelector extends Component {
           <Select
           options={this.state.characterList}
           changeHandler = {this.changeHandler1}
-          selected = {this.state.currentSelect1}/>
+          selected = {this.state.currentSelect1}
+          excludedIds = {[this.state.currentSelect2.id, this.state.currentSelect3.id]}/>
           <Select
           options={this.state.characterList}
           changeHandler = {this.changeHandler2}
-          selected = {this.state.currentSelect2}/>
+          selected = {this.state.currentSelect2}
+          excludedIds = {[this.state.currentSelect1.id, this.state.currentSelect3.id]}/>
           <Select
           options={this.state.characterList}
           changeHandler = {this.changeHandler3}
-          selected = {this.state.currentSelect3}/>
+          selected = {this.state.currentSelect3}
+          excludedIds = {[this.state.currentSelect1.id, this.state.currentSelect2.id]}/>
           <CoolLink
             buttonText="START GAME"
             to= {
